@@ -135,7 +135,7 @@ max-width:700px;
 <button onclick="surprise()">اضغطي هنا يا أحن أم ❤️</button>
 
 <audio id="bgMusic" loop>
-<source src="music.mp3" type="audio/mpeg">
+<source src="music1.mp3" type="audio/mpeg">
 </audio>
 
 </div>
@@ -170,10 +170,9 @@ var password = document.getElementById("pass").value;
 if(password === "mama"){
 document.getElementById("login").style.display="none";
 document.getElementById("content").style.display="block";
-document.getElementById("bgMusic").play();
 
-document.getElementById("imageContainer").innerHTML =
-'< img src="love1.jpg" style="margin-top:30px;max-width:320px;border-radius:20px;box-shadow:0 0 30px #ff4d6d;">';
+var audio = document.getElementById("bgMusic");
+audio.play().catch(function(){});
 
 typeWriter();
 createHearts();
