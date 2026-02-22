@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>لأجمل أم في الدنيا ❤️</title>
+
+<style>
+body{
+margin:0;
+padding:0;
+background:#000;
+color:white;
+font-family:Arial;
+text-align:center;
+overflow:hidden;
+}
+
+#login{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+}
+
+input{
+padding:10px;
+font-size:18px;
+border-radius:10px;
+border:none;
+}
+
+button{
+padding:12px 22px;
+font-size:18px;
+border-radius:12px;
+border:none;
+background:linear-gradient(45deg, #ff4d6d, #ff8fa3);
+color:white;
+cursor:pointer;
+box-shadow:0 0 15px #ff4d6d;
+}
+
+#content{
+display:none;
+padding-top:50px;
+}
+
+h1{
+color:#ff8fa3;
+font-size:35px;
+}
+
+.typing{
+font-size:22px;
+width:85%;
+margin:auto;
+white-space:pre-line;
+line-height:1.8;
+margin-top:20px;
+}
+
+#counter{
+font-size:20px;
+margin-top:15px;
+color:#ffccd5;
+}
+
+.heart{
+position:absolute;
+color:#ff4d6d;
+animation:float 6s linear infinite;
+}
+
+@keyframes float{
+0%{transform:translateY(100vh);}
+100%{transform:translateY(-10vh);}
+}
+
+#surpriseBox{
+visibility:hidden;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
+flex-direction:column;
+z-index:999;
+}
+
+#surpriseBox.active{
+visibility:visible;
+}
+
+.ayah{
+font-size:26px;
+color:#ffccd5;
+margin-bottom:20px;
+line-height:2;
+}
+
+.duaa{
+font-size:22px;
+line-height:1.8;
+max-width:700px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="login">
+<h2>اكتب كلمة السر ❤️</h2>
+<input type="password" id="pass" placeholder="الباسورد هنا">
+<br><br>
+<button onclick="checkPass()">دخول</button>
+</div>
+
+<div id="content">
+
+<h1>❤️ من يوم 1 أكتوبر 2007 ❤️</h1>
+
+<div id="counter"></div>
+
+<p class="typing" id="text"></p >
+
+<div id="imageContainer"></div>
+
+<br><br>
+<button onclick="surprise()">اضغطي هنا يا أحن أم ❤️</button>
+
+<audio id="bgMusic" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+
+<div id="surpriseBox">
+<h1 style="color:#ff8fa3;">مفاجأة يا أمي ❤️</h1>
+
+<p class="ayah">
+"وَقُل رَّبِّ ارْحَمْهُمَا كَمَا رَبَّيَانِي صَغِيرًا"  
+<br>صدق الله العظيم 🤍
+</p >
+
+<p class="duaa">
+أمي الغالية…  
+ربنا يبارك في عمرك، ويجزيكي عني خير الجزاء.  
+
+اللهم ارزق أمي الصحة والعافية،  
+واكتب لها السعادة في كل خطوة،  
+ولا تحرمني من وجودها أبدًا ❤️  
+
+بحبك يا أمي حب ملوش آخر 💕
+</p >
+
+<br>
+<button onclick="closeSurprise()">اقفلي المفاجأة ❤️</button>
+</div>
+
+<script>
+
+function checkPass(){
+var password = document.getElementById("pass").value;
+if(password === "mama"){
+document.getElementById("login").style.display="none";
+document.getElementById("content").style.display="block";
+document.getElementById("bgMusic").play();
+
+document.getElementById("imageContainer").innerHTML =
+'< img src="love1.jpg" style="margin-top:30px;max-width:320px;border-radius:20px;box-shadow:0 0 30px #ff4d6d;">';
+
+typeWriter();
+createHearts();
+startCounter();
+}else{
+alert("الباسورد غلط 😢");
+}
+}
+
+var i = 0;
+
+var txt = "أمي ❤️\n\nمن يوم 1 أكتوبر 2007 وإنتِ سبب كل حاجة حلوة في حياتي.\n\nتعبك، دعواتك، خوفك عليا…\nكل ده عمره ما هيتنسى.\n\nربنا يخليكي ليا ويطول في عمرك يا أحن قلب في الدنيا 💕";
+
+function typeWriter(){
+if(i < txt.length){
+document.getElementById("text").innerHTML += txt.charAt(i);
+i++;
+setTimeout(typeWriter,45);
+}
+}
+
+function startCounter(){
+var startDate = new Date(2007, 9, 1, 0, 0, 0).getTime();
+
+setInterval(function(){
+var now = new Date().getTime();
+var distance = now - startDate;
+
+var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+document.getElementById("counter").innerHTML =
+"عدّى علينا: " + days + " يوم " +
+hours + " ساعة " +
+minutes + " دقيقة " +
+seconds + " ثانية ❤️";
+},1000);
+}
+
+function createHearts(){
+setInterval(function(){
+var heart = document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤️";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=Math.random()*20+20+"px";
+document.body.appendChild(heart);
+setTimeout(function(){heart.remove();},6000);
+},500);
+}
+
+function surprise(){
+document.getElementById("surpriseBox").classList.add("active");
+}
+
+function closeSurprise(){
+document.getElementById("surpriseBox").classList.remove("active");
+}
+
+</script>
+
+</body>
+</html>
