@@ -65,6 +65,10 @@ margin-top:15px;
 color:#ffccd5;
 }
 
+audio{
+margin-top:20px;
+}
+
 .heart{
 position:absolute;
 color:#ff4d6d;
@@ -134,7 +138,8 @@ max-width:700px;
 <br><br>
 <button onclick="surprise()">اضغطي هنا يا أحن أم ❤️</button>
 
-<audio id="bgMusic" loop>
+<!-- مشغل الصوت -->
+<audio id="bgMusic" loop controls>
 <source src="music1.mp3" type="audio/mpeg">
 </audio>
 
@@ -171,8 +176,8 @@ if(password === "mama"){
 document.getElementById("login").style.display="none";
 document.getElementById("content").style.display="block";
 
-var audio = document.getElementById("bgMusic");
-audio.play().catch(function(){});
+document.getElementById("imageContainer").innerHTML =
+'< img src="love1.jpg" style="margin-top:30px;max-width:320px;border-radius:20px;box-shadow:0 0 30px #ff4d6d;">';
 
 typeWriter();
 createHearts();
